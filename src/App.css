@@ -490,6 +490,24 @@ body {
   height: auto;
 }
 
+/* Metades dos cards (usadas só no mobile — mesma imagem, recortada via background) */
+.compare-half {
+  display: none;
+  width: 100%;
+  aspect-ratio: 0.951;
+  background-image: url('/assets/metodo-cards.png');
+  background-size: 204.6% auto;
+  background-repeat: no-repeat;
+}
+
+.compare-half-sem {
+  background-position: 0% 0%;
+}
+
+.compare-half-com {
+  background-position: 100% 0%;
+}
+
 .compare-card {
   background: linear-gradient(165deg, #14265c 0%, #0a1440 100%);
   border: 1px solid var(--border-soft);
@@ -1121,7 +1139,7 @@ body {
   }
 
   .form-foto {
-    order: 0;
+    order: 2;
   }
 
   .form-desc {
@@ -1130,6 +1148,31 @@ body {
 }
 
 @media (max-width: 760px) {
+  :root {
+    --section-pad: 56px;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .compare-cards-img {
+    display: none;
+  }
+
+  .compare-half {
+    display: block;
+  }
+
+  .depoimentos-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  .btn-large {
+    padding: 0.6em 1em;
+  }
+
   .hero-bg {
     background-position: 72% center;
   }

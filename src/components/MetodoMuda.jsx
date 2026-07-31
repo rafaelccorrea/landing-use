@@ -14,6 +14,8 @@ function MetodoMuda() {
             alt="Comparativo: sem método USE VOE — preocupação com rotatividade, talentos saindo, equipe sem propósito; com método USE VOE — equipe engajada, talentos que ficam, faturamento crescendo"
             className="compare-cards-img"
           />
+          <div className="compare-half compare-half-sem" role="img" aria-label="Card: sem método USE VOE" />
+          <div className="compare-half compare-half-com" role="img" aria-label="Card: com método USE VOE" />
           <div className="compare-fotos">
             <img
               src="/assets/audience-sm-1.png"

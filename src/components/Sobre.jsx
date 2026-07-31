@@ -1,20 +1,11 @@
 function Sobre() {
   return (
     <section className="sobre" id="sobre">
-      <div className="container sobre-grid">
-        <div className="sobre-foto">
-          <div className="sobre-foto-glow" />
-          <img
-            src="/assets/cesar-sobre.png"
-            alt="Cesar Almeida"
-            loading="lazy"
-          />
-        </div>
+      <div className="container">
         <div className="sobre-conteudo">
-          <span className="sobre-eyebrow">QUEM É</span>
-          <h2>CESAR ALMEIDA</h2>
+          <h2 className="section-title-left">QUEM É O CESAR ALMEIDA</h2>
           <p>
-            Cesar Almeida é palestrante, especialista em capital intelectual,
+            Cezar Almeida é palestrante, especialista em capital intelectual,
             desenvolvimento de pessoas, hipnoterapeuta e praticante de PNL com
             mais de 25 anos de experiência em vendas, liderança e transformação
             pessoal. Formado em Administração de Empresas e pós-graduado em
@@ -35,6 +26,12 @@ function Sobre() {
           </p>
         </div>
       </div>
+      <img
+        src="/assets/cesar-sobre.png"
+        alt="Cesar Almeida"
+        className="sobre-foto-img"
+        loading="lazy"
+      />
     </section>
   )
 }

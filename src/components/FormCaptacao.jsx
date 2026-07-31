@@ -90,7 +90,8 @@ function FormCaptacao() {
               />
             </div>
               <button type="submit" className="btn btn-primary btn-large">
-                QUERO RECEBER UMA PROPOSTA <span className="arrow">↗</span>
+                QUERO RECEBER UMA PROPOSTA{' '}
+                <img src="/assets/icons/icon-arrow.png" alt="" className="arrow" />
               </button>
             </form>
           )}

@@ -23,7 +23,8 @@ function Hero() {
             e resultados.
           </p>
           <a href="#form" className="btn btn-primary">
-            RECEBER PROPOSTA <span className="arrow">↗</span>
+            RECEBER PROPOSTA{' '}
+            <img src="/assets/icons/icon-arrow.png" alt="" className="arrow" />
           </a>
         </div>
       </div>

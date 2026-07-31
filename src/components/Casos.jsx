@@ -1,36 +1,15 @@
+import CheckCircle from './CheckCircle'
+
 const IconTooth = () => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M12 3c-1.6 0-2.2.8-3.8.8C6.3 3.8 4.5 4.8 4.5 8c0 2.3.7 3.9 1.3 6.2.5 2 .5 5 1.9 5 1.3 0 1.3-3 2-4.6.3-.7.7-1.1 2.3-1.1s2 .4 2.3 1.1c.7 1.6.7 4.6 2 4.6 1.4 0 1.4-3 1.9-5C18.8 11.9 19.5 10.3 19.5 8c0-3.2-1.8-4.2-3.7-4.2-1.6 0-2.2-.8-3.8-.8Z"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinejoin="round"
-    />
-  </svg>
+  <img src="/assets/icons/icon-tooth.png" alt="" loading="lazy" />
 )
 
 const IconBrain = () => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M12 5.5A2.5 2.5 0 0 0 7.5 4 2.5 2.5 0 0 0 5 6.5 2.5 2.5 0 0 0 4 11a2.5 2.5 0 0 0 1.2 4.3A2.5 2.5 0 0 0 8 18a2.3 2.3 0 0 0 4-.8m0-11.7A2.5 2.5 0 0 1 16.5 4 2.5 2.5 0 0 1 19 6.5 2.5 2.5 0 0 1 20 11a2.5 2.5 0 0 1-1.2 4.3A2.5 2.5 0 0 1 16 18a2.3 2.3 0 0 1-4-.8m0-11.7v11.7"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+  <img src="/assets/icons/icon-brain.png" alt="" loading="lazy" />
 )
 
 const IconHouse = () => (
-  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <path
-      d="M4 11 12 4l8 7M6 9.5V20h4v-5h4v5h4V9.5"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    />
-  </svg>
+  <img src="/assets/icons/icon-house.png" alt="" loading="lazy" />
 )
 
 const cases = [
@@ -91,9 +70,10 @@ function Casos() {
               <div className="case-body">
                 <p className="case-desafio">{c.desafio}</p>
                 <p className="case-fez">
-                  <span className="check">✓</span>
+                  <CheckCircle className="check" />
                   <span>
-                    <strong>O que fizemos:</strong> {c.solucao}
+                    <strong>O que fizemos:</strong>{' '}
+                    <span className="destaque-gold">{c.solucao}</span>
                   </span>
                 </p>
                 <p className="case-resultado">{c.resultado}</p>
@@ -102,9 +82,9 @@ function Casos() {
           ))}
         </div>
 
-        <p className="subtitle casos-close">
-          Qual desses profissionais se parece com você? O potencial já está aí.
-          <strong> Falta só ativar.</strong>
+        <p className="casos-close">
+          Qual desses profissionais se <strong>parece com você?</strong> O
+          potencial já está aí. <strong>Falta só ativar.</strong>
         </p>
       </div>
     </section>

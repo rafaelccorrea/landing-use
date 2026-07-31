@@ -54,9 +54,7 @@ const stats = [
 function Resultados() {
   return (
     <section className="resultados" id="resultados">
-      <div className="container">
-        <h2 className="section-title">RESULTADOS REAIS</h2>
-
+      <div className="container resultados-grid">
         <div className="resultados-collage">
           <img
             src="/assets/cesar-hero.png"
@@ -65,32 +63,38 @@ function Resultados() {
           />
         </div>
 
-        <h3 className="resultados-frase">
-          Resultados extraordinários começam quando o potencial encontra
-          direção.
-        </h3>
+        <div className="resultados-col">
+          <h2 className="resultados-title">RESULTADOS REAIS</h2>
 
-        <div className="stats-grid">
-          {stats.map((s) => (
-            <div className="stat-card" key={s.numero}>
-              <div className="stat-icon">{s.icon}</div>
-              <span className="stat-number">{s.numero}</span>
-              <span className="stat-label">{s.label}</span>
-            </div>
-          ))}
-        </div>
+          <p className="resultados-frase">
+            Resultados extraordinários começam quando o potencial encontra
+            direção.
+          </p>
 
-        <div className="resultados-content">
-          <p>
+          <div className="stats-grid">
+            {stats.map((s) => (
+              <div className="stat-card" key={s.numero}>
+                <div className="stat-icon">{s.icon}</div>
+                <span className="stat-number">{s.numero}</span>
+                <span className="stat-label">{s.label}</span>
+              </div>
+            ))}
+          </div>
+
+          <p className="resultados-texto">
             Esses números não vieram do acaso. Vieram de profissionais que
             tinham potencial, mas faltava método, clareza e alguém que
-            acreditasse neles antes de eles mesmos acreditarem.
+            acreditasse neles antes de eles mesmos acreditarem. Será que você
+            também está nesse ponto?
           </p>
-          <p className="destaque">Será que você também está nesse ponto?</p>
-          <a href="#metodo" className="btn btn-secondary">
-            CONHECER MÉTODO <span className="arrow">↗</span>
-          </a>
         </div>
+      </div>
+
+      <div className="resultados-cta">
+        <a href="#metodo" className="btn btn-primary">
+          CONHECER MÉTODO{' '}
+          <img src="/assets/icons/icon-arrow.png" alt="" className="arrow" />
+        </a>
       </div>
     </section>
   )

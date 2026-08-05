@@ -5,7 +5,7 @@ function Sobre() {
         <div className="sobre-conteudo">
           <h2 className="section-title-left">QUEM É O CESAR ALMEIDA</h2>
           <p>
-            Cezar Almeida é palestrante, especialista em capital intelectual,
+            Cesar Almeida é palestrante, especialista em capital intelectual,
             desenvolvimento de pessoas, hipnoterapeuta e praticante de PNL com
             mais de 25 anos de experiência em vendas, liderança e transformação
             pessoal. Formado em Administração de Empresas e pós-graduado em

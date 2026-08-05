@@ -901,12 +901,33 @@ body {
   background: #0a1230;
 }
 
-.depoimento-thumb img {
+.depoimento-thumb img,
+.depoimento-thumb video {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   filter: brightness(1.08) contrast(1.04) saturate(1.1);
+}
+
+button.play-btn {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* ===== SOBRE ===== */

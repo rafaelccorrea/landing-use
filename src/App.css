@@ -1025,6 +1025,67 @@ button.play-btn {
   filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.5));
 }
 
+.form-card {
+  position: relative;
+  padding: clamp(26px, 2.6vw, 46px);
+  border-radius: 22px;
+  border: 1px solid var(--border-color);
+  background:
+    linear-gradient(160deg, rgba(18, 42, 99, 0.55) 0%, rgba(9, 6, 25, 0.85) 62%);
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+}
+
+.form-card-glow {
+  position: absolute;
+  top: -35%;
+  right: -18%;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(93, 224, 230, 0.22) 0%,
+    rgba(93, 224, 230, 0) 70%
+  );
+  pointer-events: none;
+}
+
+.form-card > *:not(.form-card-glow) {
+  position: relative;
+  z-index: 1;
+}
+
+.form-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: clamp(18px, 1.8vw, 28px);
+}
+
+.form-logo {
+  width: clamp(120px, 11vw, 190px);
+  height: auto;
+}
+
+.form-badge {
+  display: inline-block;
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: rgba(93, 224, 230, 0.1);
+  color: var(--cyan);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
 .form-col h2 {
   font-size: var(--fs-title);
   font-weight: 800;
@@ -1037,51 +1098,100 @@ button.play-btn {
 .form-desc {
   text-align: left;
   margin: 0 0 30px;
-  max-width: 30em;
+  max-width: 34em;
 }
 
-.form-contato {
-  max-width: 560px;
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(14px, 1.4vw, 22px);
 }
 
 .form-group {
+  position: relative;
   margin-bottom: clamp(16px, 1.6vw, 24px);
 }
 
 .form-contato input,
 .form-contato textarea {
   width: 100%;
-  padding: 0.95em 1.15em;
-  background: #d2d3d8;
-  border: none;
-  border-radius: 3px;
-  color: #16182c;
+  padding: 1.55em 1.1em 0.6em;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-soft);
+  border-radius: 12px;
+  color: var(--text-light);
   font-size: var(--fs-body);
   font-family: inherit;
-  transition: all 0.25s ease;
+  transition:
+    border-color 0.22s ease,
+    background 0.22s ease,
+    box-shadow 0.22s ease;
 }
 
 .form-contato input::placeholder,
 .form-contato textarea::placeholder {
-  color: #333650;
+  color: transparent;
+}
+
+.form-contato label {
+  position: absolute;
+  top: 1.05em;
+  left: 1.15em;
+  color: var(--text-dim);
+  font-size: var(--fs-body);
+  line-height: 1;
+  pointer-events: none;
+  transform-origin: left top;
+  transition:
+    transform 0.18s ease,
+    color 0.18s ease;
+}
+
+.form-contato input:focus + label,
+.form-contato textarea:focus + label,
+.form-contato input:not(:placeholder-shown) + label,
+.form-contato textarea:not(:placeholder-shown) + label {
+  transform: translateY(-0.72em) scale(0.72);
+  color: var(--cyan);
+}
+
+.form-contato input:hover,
+.form-contato textarea:hover {
+  border-color: rgba(93, 224, 230, 0.35);
 }
 
 .form-contato input:focus,
 .form-contato textarea:focus {
   outline: none;
-  background: #e4e5ea;
-  box-shadow: 0 0 0 3px rgba(93, 224, 230, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 4px rgba(93, 224, 230, 0.16);
 }
 
 .form-contato textarea {
   resize: vertical;
-  min-height: 3.2em;
+  min-height: 7em;
 }
 
 .form-contato .campo-invalido,
+.form-contato .campo-invalido:hover,
 .form-contato .campo-invalido:focus {
-  background: #f6dcdc;
-  box-shadow: 0 0 0 2px #e0645d;
+  border-color: #e0645d;
+  box-shadow: 0 0 0 4px rgba(224, 100, 93, 0.16);
+}
+
+.form-contato .campo-invalido + label {
+  color: #ff9a94;
+}
+
+.form-contador {
+  /* topo à direita para não colidir com a alça de redimensionar do textarea */
+  position: absolute;
+  right: 14px;
+  top: 12px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  pointer-events: none;
 }
 
 .form-erro {
@@ -1092,6 +1202,31 @@ button.play-btn {
   color: #ff9a94;
 }
 
+.form-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 20px;
+  list-style: none;
+  font-size: var(--fs-small);
+  color: var(--text-dim);
+}
+
+.form-trust li {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.form-trust li::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cyan);
+  flex-shrink: 0;
+}
+
 .form-contato button {
   margin-top: 10px;
 }
@@ -1099,11 +1234,10 @@ button.play-btn {
 .form-sucesso {
   font-size: var(--fs-body);
   color: var(--cyan);
-  padding: 34px;
+  padding: clamp(20px, 2vw, 30px);
   background: rgba(93, 224, 230, 0.08);
   border: 1px solid var(--border-color);
-  border-radius: 10px;
-  max-width: 560px;
+  border-radius: 14px;
 }
 
 .form-sucesso p + p {
@@ -1208,6 +1342,14 @@ button.play-btn {
 @media (max-width: 760px) {
   :root {
     --section-pad: 56px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-card-head {
+    justify-content: flex-start;
   }
 
   .container {

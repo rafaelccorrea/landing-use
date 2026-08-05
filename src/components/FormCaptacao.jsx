@@ -150,10 +150,12 @@ function FormCaptacao() {
   }
 
   const campoProps = (name) => ({
+    id: `campo-${name}`,
     name,
     value: form[name],
     onChange: handleChange,
     onBlur: handleBlur,
+    placeholder: ' ',
     'aria-invalid': erros[name] ? 'true' : undefined,
     'aria-describedby': erros[name] ? `erro-${name}` : undefined,
     className: erros[name] ? 'campo-invalido' : undefined,
@@ -179,16 +181,28 @@ function FormCaptacao() {
         </div>
 
         <div className="form-col">
-          <h2>
-            Pronto para despertar o potencial da sua equipe e transformar seus
-            resultados?
-          </h2>
-          <p className="section-desc form-desc">
-            Preencha os dados abaixo e descubra como o Método USE VOE pode gerar
-            uma transformação real na sua empresa, carreira ou equipe.
-          </p>
+          <div className="form-card">
+            <div className="form-card-glow" aria-hidden="true" />
 
-          {enviado ? (
+            <div className="form-card-head">
+              <img
+                src="/assets/logo-usevoe.png"
+                alt="U.S.E V.O.E"
+                className="form-logo"
+              />
+              <span className="form-badge">Vagas limitadas por mês</span>
+            </div>
+
+            <h2>
+              Pronto para despertar o potencial da sua equipe e transformar seus
+              resultados?
+            </h2>
+            <p className="section-desc form-desc">
+              Preencha os dados abaixo e descubra como o Método USE VOE pode
+              gerar uma transformação real na sua empresa, carreira ou equipe.
+            </p>
+
+            {enviado ? (
             <div className="form-sucesso">
               <p>
                 Obrigado, {form.nome.trim().split(' ')[0]}! Recebemos seus dados
@@ -211,58 +225,72 @@ function FormCaptacao() {
                 </p>
               )}
             </div>
-          ) : (
-            <form className="form-contato" onSubmit={handleSubmit} noValidate>
-              <div className="form-group">
-                <input
-                  type="text"
-                  placeholder="Nome completo"
-                  autoComplete="name"
-                  maxLength={80}
-                  {...campoProps('nome')}
-                />
-                <Erro name="nome" />
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  placeholder="E-mail"
-                  autoComplete="email"
-                  maxLength={120}
-                  {...campoProps('email')}
-                />
-                <Erro name="email" />
-              </div>
-              <div className="form-group">
-                <input
-                  type="tel"
-                  placeholder="(00) 00000-0000"
-                  autoComplete="tel"
-                  inputMode="numeric"
-                  maxLength={15}
-                  {...campoProps('whatsapp')}
-                />
-                <Erro name="whatsapp" />
-              </div>
-              <div className="form-group">
-                <textarea
-                  placeholder="Qual é seu maior desafio hoje?"
-                  rows="4"
-                  maxLength={600}
-                  {...campoProps('desafio')}
-                />
-                <Erro name="desafio" />
-              </div>
-              <button type="submit" className="btn btn-primary btn-large">
-                QUERO RECEBER UMA PROPOSTA{' '}
-                <img
-                  src="/assets/icons/icon-arrow.png"
-                  alt=""
-                  className="arrow"
-                />
-              </button>
-            </form>
-          )}
+            ) : (
+              <form className="form-contato" onSubmit={handleSubmit} noValidate>
+                <div className="form-row">
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      autoComplete="name"
+                      maxLength={80}
+                      {...campoProps('nome')}
+                    />
+                    <label htmlFor="campo-nome">Nome completo</label>
+                    <Erro name="nome" />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="tel"
+                      autoComplete="tel"
+                      inputMode="numeric"
+                      maxLength={15}
+                      {...campoProps('whatsapp')}
+                    />
+                    <label htmlFor="campo-whatsapp">WhatsApp com DDD</label>
+                    <Erro name="whatsapp" />
+                  </div>
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    autoComplete="email"
+                    maxLength={120}
+                    {...campoProps('email')}
+                  />
+                  <label htmlFor="campo-email">Seu melhor e-mail</label>
+                  <Erro name="email" />
+                </div>
+                <div className="form-group">
+                  <textarea
+                    rows="4"
+                    maxLength={600}
+                    {...campoProps('desafio')}
+                  />
+                  <label htmlFor="campo-desafio">
+                    Qual é seu maior desafio hoje?
+                  </label>
+                  <span className="form-contador">
+                    {form.desafio.length}/600
+                  </span>
+                  <Erro name="desafio" />
+                </div>
+                <button type="submit" className="btn btn-primary btn-large">
+                  QUERO RECEBER UMA PROPOSTA{' '}
+                  <img
+                    src="/assets/icons/icon-arrow.png"
+                    alt=""
+                    className="arrow"
+                  />
+                </button>
+
+                <ul className="form-trust">
+                  <li>Resposta em até 24h</li>
+                  <li>Sem compromisso</li>
+                  <li>Seus dados não são compartilhados</li>
+                </ul>
+              </form>
+            )}
+          </div>
         </div>
       </div>
     </section>

@@ -841,6 +841,21 @@ body {
   filter: brightness(1.06) contrast(1.03) saturate(1.08);
 }
 
+.video-thumb iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+.video-data {
+  margin-top: 6px;
+  font-size: var(--fs-body);
+  font-weight: 700;
+  color: var(--text-soft);
+  letter-spacing: 0.04em;
+}
+
 .play-btn {
   position: absolute;
   top: 50%;
@@ -1061,6 +1076,20 @@ button.play-btn {
 .form-contato textarea {
   resize: vertical;
   min-height: 3.2em;
+}
+
+.form-contato .campo-invalido,
+.form-contato .campo-invalido:focus {
+  background: #f6dcdc;
+  box-shadow: 0 0 0 2px #e0645d;
+}
+
+.form-erro {
+  display: block;
+  margin-top: 7px;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: #ff9a94;
 }
 
 .form-contato button {

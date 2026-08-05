@@ -1106,6 +1106,14 @@ button.play-btn {
   max-width: 560px;
 }
 
+.form-sucesso p + p {
+  margin-top: 14px;
+}
+
+.form-sucesso-aviso {
+  color: #ff9a94;
+}
+
 /* ===== FOOTER ===== */
 .footer {
   background: #03050f;

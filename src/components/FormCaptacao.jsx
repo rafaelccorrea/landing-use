@@ -1,6 +1,38 @@
 import { useState } from 'react'
 
 const WHATSAPP = '5519981411007'
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
+
+async function enviarEmail(form) {
+  if (!WEB3FORMS_KEY) {
+    console.warn('VITE_WEB3FORMS_KEY não configurada — e-mail não enviado.')
+    return false
+  }
+
+  try {
+    const resp = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject: `Novo lead do site — ${form.nome.trim()}`,
+        from_name: 'Landing U.S.E V.O.E',
+        Nome: form.nome.trim(),
+        Email: form.email.trim(),
+        WhatsApp: form.whatsapp,
+        'Maior desafio': form.desafio.trim(),
+      }),
+    })
+    const dados = await resp.json()
+    return Boolean(dados.success)
+  } catch (err) {
+    console.error('Falha ao enviar o lead por e-mail:', err)
+    return false
+  }
+}
 
 const campos = ['nome', 'email', 'whatsapp', 'desafio']
 
@@ -59,6 +91,7 @@ function FormCaptacao() {
   const [erros, setErros] = useState({})
   const [tocados, setTocados] = useState({})
   const [enviado, setEnviado] = useState(false)
+  const [emailOk, setEmailOk] = useState(null)
 
   function handleChange(e) {
     const { name } = e.target
@@ -105,12 +138,15 @@ function FormCaptacao() {
       `*Maior desafio hoje:* ${form.desafio.trim()}`,
     ].join('\n')
 
+    // abre o WhatsApp ainda dentro do clique, senão o navegador bloqueia o pop-up
     window.open(
       `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(mensagem)}`,
       '_blank',
       'noopener,noreferrer',
     )
     setEnviado(true)
+
+    enviarEmail(form).then(setEmailOk)
   }
 
   const campoProps = (name) => ({
@@ -153,19 +189,28 @@ function FormCaptacao() {
           </p>
 
           {enviado ? (
-            <p className="form-sucesso">
-              Obrigado, {form.nome.trim().split(' ')[0]}! Abrimos o WhatsApp com
-              seus dados já preenchidos — é só enviar a mensagem. Se a janela não
-              abrir,{' '}
-              <a
-                href={`https://wa.me/${WHATSAPP}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                clique aqui
-              </a>
-              .
-            </p>
+            <div className="form-sucesso">
+              <p>
+                Obrigado, {form.nome.trim().split(' ')[0]}! Recebemos seus dados
+                e já entraremos em contato. Abrimos também o WhatsApp com a
+                mensagem pronta — se a janela não abrir,{' '}
+                <a
+                  href={`https://wa.me/${WHATSAPP}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  clique aqui
+                </a>
+                .
+              </p>
+              {emailOk === false && (
+                <p className="form-sucesso-aviso">
+                  Não conseguimos registrar seu contato automaticamente. Por
+                  favor, envie a mensagem pelo WhatsApp para garantir o
+                  atendimento.
+                </p>
+              )}
+            </div>
           ) : (
             <form className="form-contato" onSubmit={handleSubmit} noValidate>
               <div className="form-group">
